@@ -17,10 +17,13 @@ function Toform() {
   }
 
   useEffect(() => {
+    // to render first
     loadTodos();
   }, []);
 
   const handleTool = async () => {
+    //to input title and desc
+
     const newTodoItem = {
       title: title,
       description: descrpt,
@@ -34,12 +37,13 @@ function Toform() {
   };
 
   const handleUpdate = async () => {
+    //updating title and desc
+
     const updatedTodo = {
       title: title,
       description: descrpt,
     };
     await updateTodos(editId, updatedTodo);
-
     setTitle("");
     setDescrpt("");
     setEditId("");
@@ -47,11 +51,14 @@ function Toform() {
   };
 
   const handleDelete = async (id) => {
+    //to dlt one item
     await deleteTodos(id);
     loadTodos();
   };
 
   const deleteAll = async () => {
+    //to dlt all
+
     for (const item of allTodos) {
       await deleteTodos(item.id);
     }
@@ -59,24 +66,67 @@ function Toform() {
   };
 
   const handleEdit = (item) => {
+    //actual updation
     setEditId(item.id);
     setTitle(item.title);
     setDescrpt(item.description);
   };
 
+  const handleComplete = async (item) => {
+    //complete
+
+    const updatedTodo = {
+      title: item.title,
+      description: item.description,
+      isComplete: !item.isComplete,
+    };
+    await updateTodos(item.id, updatedTodo);
+
+    loadTodos();
+  };
+
   const handleFilter = () => {
+    //filtering which is what
     if (filter === "all") {
       return allTodos;
     }
 
     if (filter === "completed") {
-      return allTodos;
+      return allTodos.filter((item) => item.isComplete);
     }
 
     if (filter === "inprogress") {
-      return allTodos;
+      return allTodos.filter((item) => !item.isComplete);
     }
+    return allTodos;
   };
+
+  const handleFinish = async () => {
+    //all task will be completed
+    for (const item of allTodos) {
+      const updatedTodo = {
+        title: item.title,
+        description: item.description,
+        isComplete: true,
+      };
+
+      await updateTodos(item.id, updatedTodo);
+    }
+    loadTodos();
+  };
+
+  const handleClear = async () => {
+    //only completed task will be cleared
+
+    const completedall = allTodos.filter((item) => item.isComplete);
+
+    for (const item of completedall) {
+      await deleteTodos(item.id);
+    }
+
+    loadTodos();
+  };
+
   return (
     <>
       <div className="todo-wrapper">
@@ -111,28 +161,33 @@ function Toform() {
         </div>
 
         <div className="todo-list">
-          {allTodos.map((item) => {
+          {handleFilter().map((item) => {
             return (
               <div className="todo-item" key={item.id}>
-                {/* {title && descrpt && ( */}
                 <div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
                 </div>
-                {/* )} */}
+
                 <TodoItem
                   item={item}
                   onDelete={handleDelete}
                   onUpdate={handleEdit}
+                  onComplete={handleComplete}
                 />
               </div>
             );
           })}
         </div>
-        <footer>All Completed,good job!</footer>
+        <footer>Small steps every day lead to big results</footer>
       </div>
 
-      <Btnfxn All={handleFilter} Delete={deleteAll} />
+      <Btnfxn
+        setFilter={setFilter}
+        Delete={deleteAll}
+        Finish={handleFinish}
+        Clear={handleClear}
+      />
     </>
   );
 }

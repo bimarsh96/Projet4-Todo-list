@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-function Btnfxn({Delete ,handleFilter}) {
-  const [isComplete, setComplete] = useState(false);
+function Btnfxn({ Delete, setFilter, Finish, Clear }) {
   const [isClearAll, setClearAll] = useState(true);
   const [isFinish, setFinish] = useState(true);
 
@@ -10,59 +9,36 @@ function Btnfxn({Delete ,handleFilter}) {
       <div className="btn-area">
         <ul className="upper-btn">
           <li>
-            <button
-              className={`sec-btn ${isClearAll === true ? `active` : " "}`}
-              onClick={handleFilter}
-            >
+            <button className="sec-btn" onClick={() => setFilter("all")}>
               All
             </button>
           </li>
 
-
-
           <li>
-            <button
-              className={`sec-btn ${isComplete === false ? `active` : " "} `}
-              onClick={handleFilter}
-            >
+            <button className="sec-btn" onClick={() => setFilter("inprogress")}>
               In Progress
             </button>
           </li>
 
-
-
           <li>
-            <button
-              className={`sec-btn ${isComplete === true ? `active` : " "} `}
-              onClick={handleFilter}
-            >
+            <button className="sec-btn" onClick={() => setFilter("completed")}>
               Completed
             </button>
           </li>
         </ul>
 
-
-
         <ul className="lower-btn">
           <li>
-            <button
-              className={`sec-btn ${isFinish === true ? `active` : " "}`}
-              onClick={()=>setFinish(true)}
-            >
+            <button className="sec-btn" onClick={Finish}>
               Finish All
             </button>
           </li>
 
-
           <li>
-            <button 
-            className={`sec-btn ${isFinish === true ? `active` : " "}`}
-            onClick={()=>setFinish(true)}
-            >
+            <button className="sec-btn" onClick={Clear}>
               Clear Completed
             </button>
           </li>
-
 
           <li>
             <button

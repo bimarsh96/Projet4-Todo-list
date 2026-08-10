@@ -91,7 +91,7 @@ color:var(--font-color);
   background-color:  #8CD4CB;
   
   }
-.btn-area {
+.btn-area{
   position: relative;
   width: 240px;
   height: auto;
@@ -130,10 +130,19 @@ color:var(--font-color);
   align-items: center;
 }
 
-.active:hover{
+
+.sec-btn:hover{
+background-color: #8CD4CB;
+}
+
+.sec-btn:focus{
   background-color: #8CD4CB;
 }
 
+/* .btn-container{
+  display: flex;
+  justify-content: flex-end;
+} */
 
 .todo-list{
   display: flex;
@@ -199,9 +208,8 @@ color:var(--font-color);
  .tick-icon:hover{
   color: greenyellow;
   font-size: 45px;
-  
+   }
 
- }
 
  .update-icon{
 

@@ -40,10 +40,6 @@ export async function updateTodos(id, updatetodo) {
 export async function deleteTodos(id) {
   const response = await fetch(`${Api_Url}/${id}`, {
     method: "DELETE",
-
-    headers: {
-      "Content-type": "application/json",
-    },
   });
 
   const data = await response.json();
