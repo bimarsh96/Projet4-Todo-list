@@ -1,39 +1,23 @@
-/* 
+
 * {
     margin: 0;
     padding: 0;
+    font-size: 20px;
    box-sizing: border-box;
-  
-
-} */
-
-
-
+   font: "DM Sans", "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", STHeiti, "WenQuanYi Micro Hei", SimSun, sans-serif, HYWenHei-GEW !important;
+    }
 :root {
     --body-bg: #e8f6ff;
     --border-radius: 12px;
     --border: 2px solid #33322E;
     --box-shadow: 4px 4px 0px #33322E;
-    --box-shadow-reverse: -4px 4px 0px #33322E;
-    --padding: 20px 24px;
-    --btn-padding: 12px 24px;
-    --btn-small-padding: 10px 20px;
-    --font: "DM Sans", "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", STHeiti, "WenQuanYi Micro Hei", SimSun, sans-serif, HYWenHei-GEW !important;
     --font-color: #33322E;
-    --font-size-base: 16px;
-    --placeholder: rgba(51, 50, 46, 0.535);
-    --font-color-complete: rgba(51, 50, 46, 0.535);
     --bg-normal: #F9F3E5;
-    --bg-submit: #ffd6e9;
     --bg-completed: #D0F4F0;
-    --bg-discard: #FFF0EE;
-    --bg-deleted: #ddd;
-    --bg-edit: #fbeef3;
-    --normal: #f5d99e;
+    --bg-deleted: red;
     --completed: #8CD4CB;
-    --deleted: #F6A89E;
-    --black: #33322E;
-}
+
+  }
 
 body{
   background-color: var(--body-bg);
@@ -80,21 +64,18 @@ margin-right: 24px;
     margin-bottom: 10px;
   }
 
-
-
   .todo-input-item input{
     padding:8px;
     border:none;
     width:250px;
   }
 
-  
-  .todo-input-item input:focus{
+    .todo-input-item input:focus{
     outline:var(--border);
   }
 
-  .main-btn{
-background-color:var(--bg-submit) ;
+.main-btn{
+background-color: var(--bg-completed) ;
 color: var(--bg-normal);
 border:none;
 border-radius: 0px;
@@ -102,50 +83,80 @@ margin-top:25px;
 padding:10px;
 width:60px;
 cursor:pointer;
+border: var(--border);
 color:var(--font-color);
 
   }
   .main-btn:hover{
-  background-color:var(--normal) ;
+  background-color:  #8CD4CB;
   
   }
+.btn-area {
+  position: relative;
+  width: 240px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid #333;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: var(--box-shadow);
+  text-align: center;
 
-.sec-btn{
-background-color:var(--bg-completed) ;
-color: var(--bg-normal);
-/* border:none; */
-border-radius: 0px;
-margin-top:25px;
-padding:10px;
-width:fit-content;
-cursor:pointer;
-color:var(--font-color);
 }
 
-.active{
+
+.upper-btn,
+.lower-btn {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+ 
+}
+.sec-btn {
+  width: 100%;
+  height: 45px;
+  margin: 0;
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid #333;
+  background-color:white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.active:hover{
   background-color: #8CD4CB;
 }
+
 
 .todo-list{
   display: flex;
   flex-direction: column;
+  max-height: 350px;
+  overflow:auto;
+ overflow-x: hidden;
   }
 
-
-
   .todo-item{
-  background-color:var(--normal);
+  background-color:white;
   margin-top: 20px;
    padding:25px;
    padding-top: 10px;
   display: flex;
   justify-content: space-between;
+  border: var(--border);
    
   }
 .todo-item h3{
   color: var(--font-color);
   font-size: 25px;
-  margin:0;
+  margin-top:10px;
   font-weight: bold;
 }
   .todo-item p{
@@ -155,22 +166,62 @@ color:var(--font-color);
 
   }
 
+   footer{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+    height:30px;
+    margin-top: 20px;
+
+ }
+
+ 
   .dlt-icon{
   font-size:35px;
   cursor: pointer;
+
  }
 
  .dlt-icon:hover{
-  color:red
+  color: var(--bg-deleted);
+  font-size:55px;
+  
  }
 
  .tick-icon{
   font-size: 35px;
   cursor: pointer;
-  margin-left: 10px;
+  
   color: green;
+    margin-top:20px;
  }
 
  .tick-icon:hover{
   color: greenyellow;
+  font-size: 45px;
+  
+
  }
+
+ .update-icon{
+
+  font-size: 30px;
+  cursor: pointer;
+  margin-left: 10px;
+  color:brown;
+  margin-top:20px;
+ }
+
+ .update-icon:hover{
+  font-size: 45px;
+}
+
+
+
+
+
+
+
+
+
+

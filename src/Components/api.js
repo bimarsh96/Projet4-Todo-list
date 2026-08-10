@@ -1,14 +1,14 @@
-const Api_Url = "https://6a6ad153eb87a96865a8a173.mockapi.io/api/v1/todos/todos";
-
+const Api_Url =
+  "https://6a6ad153eb87a96865a8a173.mockapi.io/api/v1/todos/ToDoList"; //name of the mocapi at last
 //Get
-async function getTodo() {
+export async function getTodo() {
   const response = await fetch(Api_Url);
   const data = await response.json();
   return data;
 }
 
 //post
-async function addTodos(todo) {
+export async function addTodos(todo) {
   const response = await fetch(Api_Url, {
     method: "POST",
     headers: {
@@ -22,7 +22,7 @@ async function addTodos(todo) {
 }
 //update
 
-async function updateTodos(id, updatetodo) {
+export async function updateTodos(id, updatetodo) {
   const response = await fetch(`${Api_Url}/${id}`, {
     method: "PUT",
 
@@ -37,18 +37,15 @@ async function updateTodos(id, updatetodo) {
 }
 //delete
 
-async function deleteTodos(id) {
+export async function deleteTodos(id) {
   const response = await fetch(`${Api_Url}/${id}`, {
     method: "DELETE",
 
     headers: {
       "Content-type": "application/json",
     },
-    body: JSON.stringify(),
   });
 
   const data = await response.json();
   return data;
 }
-
-export default { getTodo, addTodos, updateTodos, deleteTodos };

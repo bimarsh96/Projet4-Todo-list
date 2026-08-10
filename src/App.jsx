@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-import TodoList from "./Components/todolist";
-import Toform from "./Components/todoform.jsx";
+import Toform from "./Components/todoform";
+
 function App() {
   const [task, settask] = useState(0);
-  const [todos, settodos] = useState([]);
+  // const [todos, settodos] = useState([]);
 
   return (
     <>
