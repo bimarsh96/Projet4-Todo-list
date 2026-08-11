@@ -5,11 +5,10 @@ import { RxUpdate } from "react-icons/rx";
 function TodoItem({ item, onDelete, onUpdate, onComplete }) {
   return (
     <>
-      <div>
+      <div className="DuT">
         <MdDelete
          className="dlt-icon"
           onClick={() => onDelete(item.id)} />
-
         <RxUpdate
          className="update-icon" 
          onClick={() => onUpdate(item)} />

@@ -11,34 +11,38 @@ function Toform() {
   const [filter, setFilter] = useState("all");
 
   async function loadTodos() {
-    //to request the data
     const data = await getTodo();
     settodos(data);
   }
 
   useEffect(() => {
-    // to render first
     loadTodos();
   }, []);
 
   const handleTool = async () => {
     //to input title and desc
+    if (!title.trim() || !descrpt.trim()) {
+      alert("Please Enter Title and Desciption");
+
+      setTitle("");
+      setDescrpt("");
+      return;
+    }
 
     const newTodoItem = {
       title: title,
       description: descrpt,
       isComplete: false,
     };
+
     await addTodos(newTodoItem);
     setTitle("");
     setDescrpt("");
-
     loadTodos();
   };
 
   const handleUpdate = async () => {
     //updating title and desc
-
     const updatedTodo = {
       title: title,
       description: descrpt,
@@ -66,7 +70,7 @@ function Toform() {
   };
 
   const handleEdit = (item) => {
-    //actual updation
+    //for input
     setEditId(item.id);
     setTitle(item.title);
     setDescrpt(item.description);
@@ -74,14 +78,12 @@ function Toform() {
 
   const handleComplete = async (item) => {
     //complete
-
     const updatedTodo = {
       title: item.title,
       description: item.description,
       isComplete: !item.isComplete,
     };
     await updateTodos(item.id, updatedTodo);
-
     loadTodos();
   };
 
@@ -98,7 +100,6 @@ function Toform() {
     if (filter === "inprogress") {
       return allTodos.filter((item) => !item.isComplete);
     }
-    return allTodos;
   };
 
   const handleFinish = async () => {
@@ -128,7 +129,7 @@ function Toform() {
   };
 
   return (
-    <>
+    <div className="todo-page">
       <div className="todo-wrapper">
         <div className="todo-input">
           <div className="todo-input-item">
@@ -160,10 +161,14 @@ function Toform() {
           </div>
         </div>
 
+        <h2>Act Now,Simplify Life.</h2>
         <div className="todo-list">
           {handleFilter().map((item) => {
             return (
-              <div className="todo-item" key={item.id}>
+              <div
+                className={`todo-item ${item.isComplete ? "completed" : ""}`}
+                key={item.id}
+              >
                 <div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
@@ -179,16 +184,17 @@ function Toform() {
             );
           })}
         </div>
-        <footer>Small steps every day lead to big results</footer>
+        <footer>Small steps every day lead to big results.</footer>
       </div>
 
       <Btnfxn
+        Filter={filter}
         setFilter={setFilter}
         Delete={deleteAll}
         Finish={handleFinish}
         Clear={handleClear}
       />
-    </>
+    </div>
   );
 }
 
