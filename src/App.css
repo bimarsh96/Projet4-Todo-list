@@ -1,7 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 * {
     margin: 0;
@@ -10,7 +8,6 @@
     box-sizing: border-box;
     font-family: "Plus Jakarta Sans", "PingFang SC", "Microsoft YaHei", sans-serif !important;
   
- 
     }
 :root {
     --body-bg: #F3f1fb;
@@ -33,21 +30,33 @@
   }
 
 body{
+
   background-color: var(--body-bg);
   color:var(--font-color);
+
    
 }
 
 h1{
   text-align: center;
   font-size: 40px;
-  margin-right: 200px;
+  margin-bottom: 10px;
+  font-weight: 800;
+ 
 }
+
+p{
+text-align:center;
+color:var(--muted-text);
+ margin-bottom:20px;
+}
+
 
 .todo-wrapper{
 background-color:var(--card-bg);
-width:720px;
-padding:2%;
+width:100%;
+max-width: 800px;
+padding:3%;
 margin-left: 0;
 margin-right: 0;
 margin-top: 0;
@@ -55,13 +64,17 @@ box-shadow:var(--box-shadow);
 border-radius: 10px;
  }
 
-  .todo-page {
+
+
+
+.todo-page {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 40px;
-  margin-top: 3%;
-}  
+  gap: 80px;
+  margin: 3% auto 0;
+  max-width: 1300px;
+}
 
  .todo-input{
   display: flex;
@@ -79,12 +92,27 @@ border-radius: 10px;
 
 ::placeholder{
   font-size: medium;
-  color:var(--card-bg);
- opacity: 0.8;
+  color:var(--muted-text);
+ opacity:1;
+}
+
+.tick-icon.active {
+  color: var(--indigo-btn);
+  background-color: #E6E1F5;
+  border-radius: 50%;
+}
+
+.update-icon.active {
+  background-color: #E6E1F5;
+  border-radius: 50%;
 }
 
 
-
+.DuT {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
  .todo-input-item{
   color:var(--muted-text);
@@ -105,8 +133,8 @@ margin-right: 24px;
     border:none;
     width:250px;
     border-radius: 5px;
-    color:var(--card-bg);
-   background-color: var(--body-text);
+    color:var(--body-text);
+   background-color:#E6E1F5;
   }
 
 
@@ -122,23 +150,11 @@ cursor:pointer;
   color:var(--card-bg);
  } 
 
- h2{
-   border: 1px solid black;
-   border-radius: 5px;
-    display: flex;
-   align-items: center;
-   justify-content: center;
-    height:40px;
-    color: var(--body-text);
-    margin-top: 20px;
-    background-color: var(--body-bg);
-  
-    
- }
+
 
 .btn-area{
   position: relative;
-  width: 200px;
+  width: 260px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -148,9 +164,7 @@ cursor:pointer;
   background-color: var(--card-bg);
   box-shadow: var(--box-shadow);
   text-align: center;
-
 }
-
 
 
 .upper-btn,
@@ -162,11 +176,12 @@ cursor:pointer;
   width: 100%;
  
 }
+
 .sec-btn {
   width: 100%;
-  height: 45px;
+  height: 55px;
   margin: 0;
-  padding: 10px;
+  padding: 12px;
   border: none;
   border-bottom: 1.5px solid #333;
   background-color:var(--item-bg);
@@ -174,8 +189,8 @@ cursor:pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 17px;
 }
-
 
 .sec-btn:hover{
 background-color: var(--indigo-btn);
@@ -215,6 +230,8 @@ color:var(--card-bg);
   border-left: 5px solid var(--indigo-btn);
    
   }
+
+
 
   .todo-item.completed {
   border-left: 5px solid var(--check-icon);
@@ -268,7 +285,7 @@ color:var(--card-bg);
   cursor: pointer;
   
   color:var(--check-icon);
-    margin-top:20px;
+  
  }
 
  .tick-icon:hover{
@@ -281,9 +298,9 @@ color:var(--card-bg);
 
   font-size: 30px;
   cursor: pointer;
-  margin-left: 10px;
+
   color:var(--indigo-btn);
-  margin-top:20px;
+
 
  }
 
@@ -359,3 +376,22 @@ color:var(--card-bg);
 
 
 
+
+@media (min-width: 481px)and (max-width: 1024px) {
+
+  .todo-page {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 90%;
+  }
+
+  .todo-wrapper {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .btn-area {
+    width: 260px;
+  }
+}

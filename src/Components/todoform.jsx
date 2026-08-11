@@ -161,7 +161,7 @@ function Toform() {
           </div>
         </div>
 
-        <h2>Act Now,Simplify Life.</h2>
+       
         <div className="todo-list">
           {handleFilter().map((item) => {
             return (
@@ -179,6 +179,7 @@ function Toform() {
                   onDelete={handleDelete}
                   onUpdate={handleEdit}
                   onComplete={handleComplete}
+                  editId={editId}
                 />
               </div>
             );

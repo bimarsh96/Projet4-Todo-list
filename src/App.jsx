@@ -11,6 +11,7 @@ function App() {
     <>
       <div className="App">
         <h1>My Todos</h1>
+        <p>Organize your day, one task at a time</p>
       </div>
 
       <Toform />

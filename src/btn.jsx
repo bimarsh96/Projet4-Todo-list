@@ -47,9 +47,11 @@ function Btnfxn({ Filter, Delete, setFilter, Finish, Clear }) {
           </li>
 
           <li>
-            <button className="sec-btn" onClick={Delete}>
-              Clear All
-            </button>
+            {
+              <button className="sec-btn" onClick={Delete}>
+                Clear All
+              </button>
+            }
           </li>
         </ul>
       </div>
